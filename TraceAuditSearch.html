@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>Trace Audit Monitor Search</title>
+
+
+<link rel="stylesheet" href="resources/css/lib/bootstrap/bootstrap.css" />
+<link rel="stylesheet" href="resources/css/lib/font-awesome/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/lib/ionicons/ionicons.min.css">
+<link rel="stylesheet" href="resources/css/lib/daterangepicker/daterangepicker-bs3.css" />
+<link rel="stylesheet" href="resources/css/lib/datepicker/bootstrap-datepicker.css">
+<link rel="stylesheet" href="resources/css/lib/datatables/datatables.css">
+<link rel="stylesheet" href="resources/css/lib/datatables/datatable.tableTools.css">
+<link rel="stylesheet" href="resources/css/lib/tabdrop/tabdrop.css" />
+<link rel="stylesheet" href="resources/css/styles.css" id="theme-css" />
+<link rel="stylesheet" href="resources/css/search.css" id="search-css" />
+<link rel="stylesheet" href="resources/css/rfnet.css" id="theme-css">
+<link rel="stylesheet" href="resources/css/commonCoreCq.css" />
+<link rel="stylesheet" href="resources/css/cq1.css" />
+<link rel="stylesheet" href="resources/css/lib/jqvmap/jqvmap.css">
+<link rel="stylesheet" href="resources/css/lib/datepicker/datepicker.css">
+
+
+
+<style>
+th,td  { height: 20px;vertical-align:top;text-align: top; overflow: auto;}
+table.dataTable thead .sorting_asc {
+  background: url("http://cdn.datatables.net/1.10.0/images/sort_asc.png") no-repeat center top;
+  visible: true;
+}
+table.dataTable thead .sorting_desc {
+  background: url("http://cdn.datatables.net/1.10.0/images/sort_desc.png") no-repeat center bottom;
+}
+table.dataTable thead .sorting {
+  background: url("http://cdn.datatables.net/1.10.0/images/sort_both.png") no-repeat center top;
+}
+table.dataTable thead .sorting {
+  background: url("http://cdn.datatables.net/1.10.0/images/sort_both.png") no-repeat center bottom;
+}
+
+@page {
+    margin: 0;
+}
+
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+}
+.v15bw { 
+ font-family: Verdana;
+ font-size: 11px; 
+ font-weight: bold;
+ color: ffffff;  
+}
+.plainwhite {text-decoration: none;
+          color: #ffffff;
+          font-family: verdana; }
+
+	#menu,#menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 105%;
+	
+	
+}
+
+#menu li {
+	float: left;
+	position: relative;
+	line-height: 4.5em;
+	width: 140%;
+}
+
+#menu li ul {
+	position: absolute;
+	margin-top: -0em;
+	margin-left: .5em;
+	
+	display: none;
+	opacity: 0.85;
+	z-index: 50;
+}
+
+#menu ul li ul {
+	margin-top: -3em;
+	margin-left: 11em; / * Menu pop up*/
+	float:left;
+	
+	
+}
+#menu a {
+	display: block;
+	border-right: 3px solid #fff;
+	color: #C0C0C0;
+	text-decoration: none;
+	background-color: #663399;
+	text-align: center;
+	
+	
+}
+
+#menu a:hover {
+	background-color: purple;
+	color: #fff;
+	
+}
+
+#menu ul {
+	border-top: 0px solid #fff;
+}
+
+#menu ul a {
+	border-right: none;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #fff;
+	border-top: 0.5px solid #fff;
+	
+}
+/* SHOW SUBMENU 1 */
+#menu li:hover ul,#menu li.over ul {
+	display: block;
+	
+	
+	
+}
+
+#menu li:hover ul ul,#menu li.over ul ul {
+	display: none;
+	
+ }
+/* SHOW SUBMENU 2 */
+#menu ul li:hover ul,#menu ul li.over ul {
+	display: block;
+	
+}	
+</style>
+<!-- ===== JAVASCRIPT START ===== -->
+				
+<script src="resources/js/lib/jquery/jquery-1.10.2.min.js" 	type="text/javascript"></script>
+<script src="resources/js/common.js" type="text/javascript"></script>
+
+<!-- Bootstrap script -->
+<script src="resources/js/lib/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+<script src="resources/js/lib/datepicker/bootstrap-datepicker.js"></script>
+<!-- Slim Scroll script -->
+<script src="resources/js/lib/slimscroll/jquery.slimscroll.min.js" 	type="text/javascript"></script>
+
+<!-- Date range picker script -->
+<script src="resources/js/lib/momentjs/moment.min.js" type="text/javascript"></script>
+<script src="resources/js/lib/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+<script src="resources/js/lib/datepicker/bootstrap-datepicker.js"></script>
+<script src="resources/js/lib/datatables/jquery.dataTables.min.js"></script>
+<script src="resources/js/lib/datatables/datatables.js" type="text/javascript"></script>
+<!-- Theme script -->
+<script src="resources/js/CqAdmin.js" type="text/javascript"></script>
+<script src="resources/js/TraceAuditSearch.js" type="text/javascript"></script>
+<script src="resources/js/CreateNewMonitor.js" type="text/javascript"></script>
+<script src="resources/js/CommonSearch.js" type="text/javascript"></script>		
+
+					<!-- Bootstrap script -->
+<!-- ===== STYLESHEETS START ===== -->
+	
+
+<style type="text/css">
+.jqstooltip {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	background: rgb(0, 0, 0) transparent;
+	background-color: rgba(0, 0, 0, 0.6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
+		endColorstr=#99000000);
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+	white-space: nowrap;
+	padding: 5px;
+	border: 1px solid white;
+	z-index: 10000;
+}
+
+.jqsfield {
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+}
+
+
+
+.blueBorder {
+	width: 98.6%;	
+	border: 1px solid #0099CC;
+	padding: 15px margin-bottom: 1%;
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: white;
+}
+
+.blueBorder1 {
+	width: 91.6%;	
+	border: 1px solid #0099CC;
+	padding: 15px margin-bottom: 1%;
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: white;
+}
+
+
+
+</style>
+</head>
+<body style="font-size: 12px;">
+<div>
+ <header> </header>
+
+		<div class="container" id="content-container" style="width:102%;margin-left:-3.2%;margin-top:-1%;"><!--********Menu Alignment-- 22-May >
+			<!-- Start from here  -->
+						<div class="row">
+							<div 	style="margin-bottom: 1%; padding-left: 14px; padding-right: 30px;"> <!-- Screen Resolution-->
+								
+								<ul id="menu"  hidden class="nav nav-tabs" >
+									<li style="width: 14%;display:none;" id="mgrGMDiv"><a href="AdminGMSchedSend"title="GM Schedule"
+										style="border-left: 2px solid #fff;" title="GM">GM</a>
+									
+									</li>					
+								
+								
+								
+								<li style="width: 12%; display:none; " id="mgrPGMDiv"><a href="AdminPGMSchedSend" title="PGM Schedule"
+										style="border-left: 2px solid #fff;" title="PGM">PGM</a>
+									
+									</li>
+								
+									<li style="width: 12%; display:none; " id="AdminDiv"><a href="#"
+										style="border-left: 2px solid #fff;" title="Admin">Admin</a>
+									<ul class="nav nav-tabs">
+											<li><a href="#" title="Monthly Job Creation">Monthly Job Creation</a>
+											<ul style="width: 100%; padding-left: 35%" class="nav nav-tabs">
+											<li><a href="AdminGMSchedSend"title="GM Schedule">GM Schedule</a></li>
+											<li><a href="AdminPGMSchedSend" title="PGM Schedule">PGM Schedule</a></li>
+											<li><a href="traceAuditSchedule"title="Trace Audit Schedule">Trace Audit Schedule</a></li>
+											</ul>
+											<li><a href="#" title="Create a New Monitor">Create a New Monitor</a>
+												<ul style="width: 100%; padding-left: 35%" class="nav nav-tabs">
+													<li><a href="CreateCqMonitor.html" title="CQ Monitor">CQ Monitor</a></li>
+													<li><a href="CaseAuditHome" title="Case Audit Monitor">Case Audit Monitor</a></li>
+													<li><a href="CreateTraceAuditMon.html" title="Trace Audit Monitor">Trace Audit Monitor</a></li>
+													<li><a href="CATAuditHome" title="CAT Audit Monitor">CAT Audit Monitor</a></li>
+												</ul>
+											</li>
+											<li><a href="#" title="Other Utilities">Other Utilities</a>
+											<ul style="width: 100%; padding-left: 35%" class="nav nav-tabs">
+											<li><a href="AdminMonLock.html" title="Lock Monitors">Lock Monitors</a></li>
+											<li><a href="AdminMgrChg.html" title="Change Mgr">Change Mgr.</a></li>
+											<li><a href="Home.html" onclick="refreshRefData();">Refresh Reference Data</a></li>
+											<li><a href="NotWorking" title="Reset GM and PGM Semaphore" >Reset GM and PGM Semaphore</a></li>
+											</ul>
+											</li>
+									</ul>
+									</li>
+
+								
+								 <li style="width: 14%; display:none;" id="CqAlignDiv"><a href="#" title="CQ Alignment">CQ Alignment</a>
+
+									<ul class="nav nav-tabs">
+									<li><a href="NotWorking" title="Create">Create</a>
+										<li><a href="NotWorking" title="Send">Send</a></li>
+										<li><a href="NotWorking" title="Score">Score</a></li>
+								</ul>
+								</li>
+								<li style="width: 14%; display: none;" id="operationAdmin"><a
+											href="NotWorking" title="Operation Admin">Operation Admin</a>
+											<ul style="width: 120%; padding-left: 0%" class="nav nav-tabs">
+													<li><a href="CreateCqMonitor.html" title="Create a new CQ Monitor">Create a new CQ Monitor</a></li>
+													<li><a href="CaseAuditHome" title="Operation Admin">Create a new Case Audit Monitor</a></li>
+													<li><a href="CreateTraceAuditMon.html" title="Create a new Trace Audit Monitor">Create a new Trace Audit Monitor</a></li>
+													<li><a href="CATAuditHome" title="Create a new CAT Audit Monitor" >Create a new CAT Audit Monitor</a></li>
+												</ul>
+											</li>
+											<li style="width: 14%; display: none;" id="newCQMonitor"><a
+											href="CreateCqMonitor.html" title="Create CQ Monitor">Create CQ Monitor</a></li>
+								<li style="width: 14%; display: none;" id="CqSearchDiv"><a
+											href="CqSearch.html" title="CQ Search" >CQ Search</a></li>
+											<li style="width: 16%; display: none;" id="newCaseAuditMonitor"><a
+											href="CaseAuditHome" title="Create Case Monitor">Create Case Monitor</a></li>
+										
+												<li style="width: 16%; display: none;" id="newTraceAuditMonitor"><a
+											href="CreateTraceAuditMon.html" title="Create Trace Monitor">Create Trace Monitor</a></li>
+											
+											<li style="width: 16%; display: none;" id="newCatAuditMonitor"><a
+											href="CATAuditHome">Create CAT Monitor</a></li>
+										<li style="width: 16%; display: none;" id="ClaimsSearchDiv"><a
+											href="ClaimsAuditSearch.html" title="Case Audit Search">Case Audit Search</a></li>
+										<li style="width: 15%; display: none;" id="TraceSearchDiv"><a
+											href="TraceAuditSearch.html" title="Trace Audit Search" style="background-color: purple;">Trace Audit
+												Search</a></li>
+										<li style="width: 15%; display: none;" id="CATSearchDiv"><a
+											href="CatAuditSearch.html" title="CAT Audit Search" >CAT Audit
+												Search</a></li>
+						
+											</ul>
+							</div>
+
+
+						</div>
+						<!-- End here  -->
+								<!-- row end -->
+
+
+
+									<div style="right: 1.2%; width:105%" class="col-md-12">	<!-- ***********************White Bar  -->
+									<div class="panel-group" id="accordionAddApp">
+										<div class="panel panel-info">
+										
+											<div id="collapseAdd_info" class="panel-collapse collapse in">
+                                                                       <div class="nav nav-tabs blueBorder">
+												<div class="panel-body">
+
+													
+
+														<div class="row" class="border1">
+															<div class="col-md-12">
+																<!-- Column 1 -->
+																<div class="col-md-2">
+																	<label class="control-label v15b" class="selecta1">MonitMonth</label>
+																</div>
+
+																<div class="col-md-2">
+																	<select id="idMonitMonth" class="selecta1">
+																	</select> <input type="text" size="4" id="idYearMonith"
+																		class="texta">
+																</div>
+																<!-- End Column 1 -->
+																<!-- Start Column 2 -->
+																		<div class="col-md-2">
+																	<label class="control-label v15b" class="selecta1">MonitByType</label>
+																</div>
+																	<div class="col-md-2">
+																	<select id="idMonitByType" class="selecta1"
+																		><!--onchange="getCntrsForNtwk(this.value)"  -->
+																		<option value=""></option>
+																		<option value="QA">QA</option>
+																		<option value="MG">Manager</option>
+																	</select>
+																</div>
+															
+																<!-- End Column 2 -->
+																<!-- Start Column 3 -->
+															<div class="col-md-2">
+																	<label class="control-label v15b">Case Date</label>
+																</div>
+
+																<div class="col-md-2">
+																	<input type="text" id="idCaseDate" size="15" class="texta" readonly="readonly">
+																	<img src="resources/images/cal.gif" border="0" id="imgStartDate" onClick="dateFillInTxt('idCaseDate')">&nbsp;
+																	
+																</div>
+																<!-- End Column 3 -->
+
+															</div>
+
+														</div>
+
+														<div class="row">
+
+															<div class="col-md-12">
+																<!-- Column 1 -->
+																<div class="col-md-2">
+																	<td><label class="control-label v15b"
+																		class="selecta1">Ntwk</label>
+																</div>
+
+																<div class="col-md-2 align:right-side">
+																	<select id="idNtwk" class="selecta1" >
+																	</select>
+																</div>
+
+
+																<!-- End Column 1 -->
+																<!-- Start Column 2 -->
+																	<div class="col-md-2">
+																	<label class="control-label v15b">RepId</label>
+																</div>
+
+																<div class="col-md-2">
+																	<input id="idRepId" size="15" class="texta">
+																</div>
+																
+																<!-- End Column 2 -->
+																<!-- Start Column 3 -->
+
+																<div class="col-md-2">
+																	<label class="control-label v15b">Practice Monit</label>
+																</div>
+
+																<div class="col-md-2">
+																	<select id="idPracticeMonit" class="selecta1" styleClass="selecta">
+																		<option value=""></option>
+																		<option value="N">N</option>
+																		<option value="Y">Y</option>
+																	</select>
+																</div>
+																<!-- End Column 3 -->
+
+
+
+															</div>
+
+														</div>
+
+														<div class="row">
+
+															<div class="col-md-12">
+																<!-- Column 1 -->
+																<div class="col-md-2">
+																	<label class="control-label v15b" class="selecta1">Center</label>
+																</div>
+
+																<div class="col-md-2">
+																	<select id="idCenter" class="selecta1">
+																		
+																		
+																	</select>
+																</div>
+
+
+																<!-- End Column 1 -->
+																<!-- Start Column 2 -->
+																<div class="col-md-2">
+																	<label class="control-label v15b">RepMgrId</label>
+																</div>
+
+																<div class="col-md-2">
+																	<input type="text" id ="idRepMgrId" size="15" class="texta">
+																</div>
+																	
+																<!-- End Column 2 -->
+																<!-- Start Column 3 -->
+
+															
+																<div class="col-md-2">
+																	<label class="control-label v15b">DeleteFlg</label>
+																</div>
+
+																<div class="col-md-2">
+																	<select id="idDeleteFlg" class="selecta1" styleClass="selecta">
+																		<option value=""></option>
+																		<option value="N" selected>N</option>
+																		<option value="Y">Y</option>
+																	</select>
+																</div>
+																<!-- End Column 3 -->
+															</div>
+
+														</div>
+														<!-- -->
+															<div class="row">
+
+															<div class="col-md-12">
+																<!-- Column 1 -->
+																<div class="col-md-2">
+																	<label class="control-label v15b" class="selecta1">Audit Form Type</label>
+																</div>
+
+																<div class="col-md-2">
+																	<select id="idAuditFormType" class="selecta1" style="width: 100px;">
+																		<option value=""></option>
+																	</select>
+																</div>
+
+
+																<!-- End Column 1 -->
+																<!-- Start Column 2 -->
+																<div class="col-md-2">
+																	<label class="control-label v15b">MonitById</label>
+																</div>
+
+																<div class="col-md-2">
+																	<input type="text" id="idMonitById" size="15"
+																		class="texta">
+																</div>
+																
+																<!-- End Column 2 -->
+																<!-- Start Column 3 -->
+
+																<div class="col-md-2">
+																	<label class="control-label v15b" class="selecta1">Monitor Date</label>
+																</div>
+
+																<div class="col-md-2">
+																<input type="text" id="idMonitDate" size="15" class="texta" readonly="readonly">
+																	<img src="resources/images/cal.gif" border="0" id="imgIdMonitDate" onClick="dateFillInTxt('idMonitDate')">&nbsp;
+																</div>
+																<!-- End Column 3 -->
+															</div>
+
+														</div>
+															<div class="row">
+
+															<div class="col-md-12">
+																<!-- Column 1 -->
+															<div class="col-md-2">
+																	<label class="control-label v15b" class="selecta1">MonitStatus</label>
+																</div>
+																<div class="col-md-2">
+																	<select id="idMonitStatus" class="selecta1"
+																		onchange="getCntrsForNtwk(this.value)">
+																		<option value=""></option>
+																		<option value="IC">InComplete</option>
+																		<option value="C">Completed</option>
+																		<option value="IL">Incomplete-Locked</option>
+																		<option value="L">Completed-Locked</option>
+																	</select>
+																</div>
+																<!-- End Column 1 -->
+																<!-- Start Column 2 -->
+																<div class="col-md-2">
+																	<label class="control-label v15b">CaseId</label>
+																</div>
+
+																<div class="col-md-2">
+																	<input type="text" id="idCaseId" size="15" class="texta">
+																</div>
+																<!-- End Column 2 -->
+																<!-- Start Column 3 -->
+
+																<div class="col-md-2">
+																	
+																</div>
+
+																<div class="col-md-2">
+																
+																</div>
+																<!-- End Column 3 -->
+															</div>
+
+														
+														<!-- -->
+
+														</div>
+														</div>
+
+																								
+
+													<div class="row">
+															<div class="col-md-12" style="margin-top: -12px;margin-left:1%"> <!--****** alignment change-->
+																<div class="col-md-3">
+																	<input type="button" id="butSearchData" style="margin-bottom: 3px;" value="Search"
+																		class="pushbut1" onClick="retriveSearchData()"> <!--****** alignment change-->
+																</div>
+															</div>
+														</div>
+														</div>
+														<div class="col-md-3">
+									 							  <span id="deleFlagMsg" style="color:#006400; font-weight: bold"><span>
+									 							  <!-- <span id="updateRecMsg" style="color:green"><span> -->
+									 					</div>
+										</div>
+										
+									</div>
+								</div>
+								
+								<div class="col-md-12" id="updateRecMsg" style="right: -3%;color: #006400; font-weight: bold"></div>
+										<table id="searchLoad"  width="99.5%" border="0" class="showLoader" align="center" ></table>
+										
+							<div style="right: 15px; width:110%;margin-left=:-0px; display:none;" class="col-md-12" id="showRecord"  ><!--***********Alignment Change-->
+								<div class="panel-group">
+								<div class="panel panel-info " >
+											
+											<table width="92.5%" border="0" id="searchTable">
+						<tr>
+							<td align="right" class="v1">
+								<img border="0" src="resources/images/note_nf.gif" align="absmiddle">&nbsp;InComplete
+								&nbsp;&nbsp;&nbsp;
+		                        <img border="0" src="resources/images/note_f.gif" align="absmiddle">&nbsp;Completed
+								&nbsp;&nbsp;&nbsp; 
+								<img border="0" src="resources/images/lock1i.gif" align="absmiddle">&nbsp;Incomplete-Locked
+								&nbsp;&nbsp;&nbsp; 
+								<img border="0" src="resources/images/lock1.gif" align="absmiddle">&nbsp;Completed-Locked
+								&nbsp;&nbsp;&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td class="v1" id ="idRow">
+								&nbsp;&nbsp;&nbsp;&nbsp;Results: <span id="rowCount"><span>
+							</td>
+						</tr>
+					</table>
+
+											<div id="collapseAdd_info"   class="panel-collapse collapse in blueBorder1">
+
+												<div class="panel-body" style="overflow: auto; ">
+												
+																
+														<div class="table-responsive " >
+																		<table id="editTable" cellpadding="0" cellspacing="0"
+																			border="0" width="100%" class="datatable table table-bordered v15bw" >
+																			<thead >
+																				<th width="-1%">
+																				</th>
+		               		<th>Action</th>
+		               		<th>Mnth</th>
+							<th>Ntwk</th>
+							<th>Cntr</th>
+							<th  align="right">Audit&nbsp;Form&nbsp;Type</th>
+							<th>RepName</th>
+		               		<th>RepId</th>
+		               		<th>RepMgr</th>
+							<th>MonitBy</th>
+							<th>Score</th>
+		               		<th>CaseId</th>
+		               		<th align="right" >Tracking&nbsp;Id&nbsp;</th>
+		               		<th align="center">Case&nbsp;Dt&nbsp;&nbsp;&nbsp;</th>
+		               		<th>Delete&nbsp;Flg</th> 
+							<th>Monitor&nbsp;Date&nbsp;</th> 
+							</thead>
+																			<tbody id="searchTableBody">
+																			</tbody>
+																		</table>
+																	</div>
+																	
+															<table id="updDeleteFlag" cellpadding="0" cellspacing="0"
+																	border="0" class="datatable table table-bordered v15bw" width="100%">
+																	</table>
+												</div>
+
+											</div>
+										
+									</div>
+														</div>														</div>
+								
+								</div>
+								
+								
+								</div>
+								
+								
+								
+								
+								
+						</section>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- panel end -->
+
+	</div>
+	<!-- col end -->
+							</div>
+							<!-- row end -->
+							
+							
+						
+					</div>
+					<!-- section container start -->
+
+
+
+					<!-- Side menu + Content end -->
+
+
+
+					<!-- Content container end -->
+					<!-- Footer container start -->
+	<div id="td1" class="footer"> </div>
+	
+	<!-- Footer container end -->
+					<!-- ===== PAGE END ===== -->
+
+				
+</body>
+</html>

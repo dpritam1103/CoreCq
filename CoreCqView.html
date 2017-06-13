@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control"
+	content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>Call Quality</title>
+<style>
+#menu,#menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 105%;
+	
+	
+}
+
+#menu li {
+	float: left;
+	position: relative;
+	line-height: 4.5em;
+	width: 130%;
+}
+
+#menu li ul {
+	position: absolute;
+	margin-top: -0em;
+	margin-left: .5em;
+	
+	display: none;
+	opacity: 0.85;
+	z-index: 50;
+}
+
+#menu ul li ul {
+	margin-top: -3em;
+	margin-left: 8em; / * Menu pop up*/
+	float:left;
+	
+	
+}
+#menu a {
+	display: block;
+	border-right: 3px solid #fff;
+	color: #C0C0C0;
+	text-decoration: none;
+	background-color: #663399;
+	text-align: center;
+	
+	
+}
+
+#menu a:hover {
+	background-color: purple;
+	color: #fff;
+	
+}
+
+#menu ul {
+	border-top: 0px solid #fff;
+}
+
+#menu ul a {
+	border-right: none;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #fff;
+	border-top: 0.5px solid #fff;
+	
+}
+/* SHOW SUBMENU 1 */
+#menu li:hover ul,#menu li.over ul {
+	display: block;
+	
+	
+	
+}
+
+#menu li:hover ul ul,#menu li.over ul ul {
+	display: none;
+	
+ }
+/* SHOW SUBMENU 2 */
+#menu ul li:hover ul,#menu ul li.over ul {
+	display: block;
+	
+}
+
+
+</style>
+
+
+</style>
+
+<!-- ===== STYLESHEETS START ===== -->
+
+<style type="text/css">
+.jqstooltip {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	background: rgb(0, 0, 0) transparent;
+	background-color: rgba(0, 0, 0, 0.6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
+		endColorstr=#99000000);
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+	white-space: nowrap;
+	padding: 5px;
+	border: 1px solid white;
+	z-index: 10000;
+}
+
+.jqsfield {
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+}
+</style>
+<!-- ===== STYLESHEETS START ===== -->
+
+<style type="text/css">
+.jqstooltip {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	background: rgb(0, 0, 0) transparent;
+	background-color: rgba(0, 0, 0, 0.6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
+		endColorstr=#99000000);
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+	white-space: nowrap;
+	padding: 5px;
+	border: 1px solid white;
+	z-index: 10000;
+}
+
+.jqsfield {
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+}
+</style>
+<style type="text/css">
+.jqstooltip {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	visibility: hidden;
+	background: rgb(0, 0, 0) transparent;
+	background-color: rgba(0, 0, 0, 0.6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
+		endColorstr=#99000000);
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+	white-space: nowrap;
+	padding: 5px;
+	border: 1px solid white;
+	z-index: 10000;
+}
+
+.jqsfield {
+	color: white;
+	font: 10px arial, san serif;
+	text-align: left;
+}
+
+footer {
+	position: fixed;
+}
+
+.blueBorder {
+	width: 100%;
+	border: 1px solid #0099CC;
+	padding: 10px margin-bottom: 1%;
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: white;
+}
+</style>
+
+</style>
+
+<!-- ===== STYLESHEETS START ===== -->
+<!-- Bootstrap style sheet-->
+<link rel="stylesheet" href="resources/css/lib/bootstrap/bootstrap.css">
+
+<link rel="stylesheet" href="resources/css/commonCoreCq.css" />
+<link rel="stylesheet" href="resources/css/cq1.css" />
+
+<!-- Font Awesome style sheet -->
+<link rel="stylesheet"
+	href="resources/css/lib/font-awesome/font-awesome.min.css">
+
+<!-- Ionicons style sheet -->
+<link rel="stylesheet"
+	href="resources/css/lib/ionicons/ionicons.min.css">
+
+<!-- Date range picker style sheet -->
+<link rel="stylesheet"
+	href="resources/css/lib/daterangepicker/daterangepicker-bs3.css">
+
+<!-- Page specific style sheet -->
+<!-- JQ Vector map style sheet -->
+<link rel="stylesheet" href="resources/css/lib/jqvmap/jqvmap.css">
+<link rel="stylesheet"
+	href="resources/css/lib/datepicker/datepicker.css">
+
+<!-- Tab drop style sheets -->
+<link rel="stylesheet" href="resources/css/lib/tabdrop/tabdrop.css">
+
+<!-- Theme specific style sheets -->
+<link rel="stylesheet" href="resources/css/styles.css" id="theme-css">
+</head>
+<body style="font-size: 12px;">
+
+<!-- ===== PAGE START ===== -->
+<div>
+ <header> </header>
+	<!-- Content container start -->
+<div class="container" id="content-container" style="width:102%;margin-left:-3.2%;margin-top:-1%;">
+<div class="content-wrapper">
+	<div class="row">
+
+		<div>
+
+			<section>
+
+						<!-- Start from here  -->
+							<div class="row">
+							<div 	style="margin-bottom: 1%; padding-left: 30px; padding-right: 30px;"> <!-- Screen Resolution-->
+								
+								<ul id="menu" hidden class="nav nav-tabs" >
+									<li style="width: 14%;display:none;" id="mgrGMDiv"><a href="AdminGMSchedSend"title="GM Schedule"
+										style="border-left: 2px solid #fff;" title="GM">GM</a>									
+									</li>
+									<li style="width: 12%; display:none; " id="mgrPGMDiv"><a href="AdminPGMSchedSend" title="PGM Schedule"
+											style="border-left: 2px solid #fff;" title="PGM">PGM</a>
+									</li>
+								
+									<li style="width: 12%; display:none; " id="AdminDiv"><a href="#"
+										style="border-left: 2px solid #fff;" title="Admin">Admin</a>
+									<ul class="nav nav-tabs">
+											<li><a href="#" title="Monthly Job Creation">Monthly Job Creation</a>
+											<ul style="width: 100%; padding-left: 35%" class="nav nav-tabs">
+											<li><a href="AdminGMSchedSend"title="GM Schedule">GM Schedule</a></li>
+											<li><a href="AdminPGMSchedSend" title="PGM Schedule">PGM Schedule</a></li>
+											<li><a href="traceAuditSchedule"title="Trace Audit Schedule">Trace Audit Schedule</a></li>
+											</ul>
+											<li><a href="#" title="Create a New Monitor">Create a New Monitor</a>
+												<ul style="width: 100%; padding-left: 35%" class="nav nav-tabs">
+													<li><a href="CreateCqMonitor.html" title="CQ Monitor">CQ Monitor</a></li>
+													<li><a href="CaseAuditHome" title="Case Audit Monitor">Case Audit Monitor</a></li>
+													<li><a href="CreateTraceAuditMon.html" title="Trace Audit Monitor">Trace Audit Monitor</a></li>
+													<li><a href="CATAuditHome" title="CAT Audit Monitor">CAT Audit Monitor</a></li>
+												</ul>
+											</li>
+											<li><a href="#" title="Other Utilities">Other Utilities</a>
+											<ul style="width: 100%; padding-left: 35%" class="nav nav-tabs">
+											<li><a href="AdminMonLock.html" title="Lock Monitors">Lock Monitors</a></li>
+											<li><a href="AdminMgrChg.html" title="Change Mgr">Change Mgr.</a></li>
+											<li><a href="RefreshRefData.html" title="Refresh Reference Data" >Refresh Reference Data</a></li>
+											<li><a href="ResetSemaphore.html" title="Reset GM and PGM Semaphore" >Reset GM and PGM Semaphore</a></li>
+											</ul>
+											</li>
+									</ul>
+									</li>
+
+								
+								 <li style="width: 14%; display:none;" id="CqAlignDiv"><a href="#" title="CQ Alignment">CQ Alignment</a>
+
+									<ul class="nav nav-tabs">
+									<li><a href="NotWorking" title="Create">Create</a>
+										<li><a href="NotWorking" title="Send">Send</a></li>
+										<li><a href="NotWorking" title="Score">Score</a></li>
+								</ul>
+								</li>
+								<li style="width: 14%; display: none;" id="operationAdmin"><a
+											href="NotWorking" title="Operation Admin">Operation Admin</a>
+											<ul style="width: 120%; padding-left: 0%" class="nav nav-tabs">
+													<li><a href="CreateCqMonitor.html" title="Create a new CQ Monitor">Create a new CQ Monitor</a></li>
+													<li><a href="CaseAuditHome" title="Operation Admin">Create a new Case Audit Monitor</a></li>
+													<li><a href="CreateTraceAuditMon.html" title="Create a new Trace Audit Monitor">Create a new Trace Audit Monitor</a></li>
+													<li><a href="CATAuditHome" title="Create a new CAT Audit Monitor" >Create a new CAT Audit Monitor</a></li>
+												</ul>
+											</li>
+											<li style="width: 14%; display: none;" id="newCQMonitor"><a
+											href="CreateCqMonitor.html" title="Create CQ Monitor">Create CQ Monitor</a></li>
+								<li style="width: 14%; display: none;" id="CqSearchDiv"><a
+											href="CqSearch.html" title="CQ Search"  style="background-color: purple;">CQ Search</a></li>
+											<li style="width: 16%; display: none;" id="newCaseAuditMonitor"><a
+											href="CaseAuditHome" title="Create Case Monitor">Create Case Monitor</a></li>
+										
+												<li style="width: 16%; display: none;" id="newTraceAuditMonitor"><a
+											href="CreateTraceAuditMon.html" title="Create Trace Monitor">Create Trace Monitor</a></li>
+											
+											<li style="width: 16%; display: none;" id="newCatAuditMonitor"><a
+											href="CATAuditHome">Create CAT Monitor</a></li>
+										<li style="width: 16%; display: none;" id="ClaimsSearchDiv"><a
+											href="ClaimsAuditSearch.html" title="Case Audit Search">Case Audit Search</a></li>
+										<li style="width: 15%; display: none;" id="TraceSearchDiv"><a
+											href="TraceAuditSearch.html" title="Trace Audit Search" style="border-left: 0px solid #fff;">Trace Audit
+												Search</a></li>
+										<li style="width: 15%; display: none;" id="CATSearchDiv"><a
+											href="CatAuditSearch.html" title="CAT Audit Search">CAT Audit
+												Search</a></li>
+						
+											</ul>
+							</div>
+
+
+						</div>
+						<!-- End here  -->
+						<!-- row end -->
+<div class="col-md-12" style="margin-bottom: 1%; padding-left: 10px; padding-right: 30px;">
+<div class="panel-group" id="accordionAddApp">
+	<div class="panel panel-info">
+
+		<div id="collapseAdd_info" class="panel-collapse collapse in">
+			<div id="submitBtnInsert_success_error"></div>
+			<div class="panel-body">
+				<div id="update_success_error"></div>
+				<div id="loading" style="display: none;">
+	<img id="loading-image"
+		src="resources/images/ajax_loader.gif" alt="Loading...">
+</div>
+
+<div id="noloading">
+	<form id="addApplicationForm"
+		class="form-horizontal bv-form" method="get"
+		novalidate="novalidate">
+
+<!-- Form data -->
+<div id="collapseAdd_info" class="panel-collapse collapse in">
+
+			<div class="panel-body">
+			<b><font face="Arial" size="2" color="#800000">VIEW MONITOR</font></b>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+					
+			  <table border="0" width="100%" cellpadding="0">
+				 <tr>
+				 	<td class="a2b"><font color="#800000">Header:</td>
+				 	<td align="right">
+						<input type="button" name="but_back" value="Back" class="pushbut1" onclick="getBackSearch('CQ')">
+						<input type="button" name="but_print" value="Print" class="pushbut1" onClick="document.getElementById('menu').style.display='none';javascript:window.print();">
+				 	</td>
+				</tr>
+		   	  </table>
+				<div class="panel-collapse collapse in blueBorder bgcolor "  width ="100%" bgcolor="#F3F3F3">
+				<table border="0" width="100%" cellpadding="0">
+																			
+																																
+	
+		  <tr>
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Column 1 -->
+				<td class="a2b" style="width: 200px;">
+				
+					<label class="control-label v15b">RepNm(Id):</label>
+				
+                                                        </td>
+
+		    <td class="a2b">
+			
+					<label
+						style="padding-bottom: 20 px !important; margin-bottom: 5px !important; margin-left: 3px; margin-left: 1px; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="repNm" maxlength="15"> </label>
+				
+				</td>
+				<!-- End Column 1 -->
+				<!-- Start Column 2 -->
+				<td class="a2b" style="width: 200px;">
+				
+                              <label class="control-label v15b" style="padding-left: 40px;"  class="selecta">Call Dt:</label>
+                                      
+                                    </td>
+                                           <td  class="a2b">
+					
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="callDT" maxlength="15"> </label>
+				
+				</td>
+
+				<!-- End Column 2 -->
+				<!-- Start Column 3 -->
+				<td  class="a2b">
+                      
+                            <label class="control-label v15b" style="padding-left: 25px;">CraId:</label>
+                          
+		   		</td>
+		   		<td  class="a2b">
+					
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="craId" maxlength="15"> </label>
+				
+				</td>
+		   		
+		   		<!-- End Column 3 -->
+
+			</div>
+
+		</div>
+		</tr>
+
+	                                                                              
+			  <tr>
+			  <div class="row">
+			<div class="col-md-12">
+				<!-- Column 1 -->
+				<td  class="a2b" style="width: 200px;">
+				
+					
+					<label class="control-label v15b">CallCenter:</label>
+				
+                                                                   </td>
+				   <td  class="a2b">
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; margin-left: 3px; margin-left: 1px; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="callCntr" maxlength="15"> </label>
+				
+				</td>
+				<!-- End Column 1 -->
+				<!-- Start Column 2 -->
+				<td class="a2b" style="padding-left: 40px;">
+				
+					<label class="control-label v15b">MonitMnth:</label>
+				
+				</td>
+				<td  class="a2b">
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="monitMnth" maxlength="15"> </label>
+				
+				</td>
+				<!-- End Column 2 -->
+				<!-- Start Column 3 -->
+				<td class="a2b">
+				 
+					<label class="control-label v15b" style="padding-left: 25px;">RefNbr:</label>
+						
+						</td>
+						<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="refNbr" maxlength="15"> </label>
+				
+				</td>
+				<!-- End Column 3 -->
+			</div>
+		</div>
+		</tr>
+
+		   <tr>
+	   <div class="row">
+			<div class="col-md-12">
+				<!-- Column 1 -->
+				<td class="a2b" style="width: 200px;">
+				
+					<label class="control-label v15b">RepMgrId:</label>
+				
+				</td>
+				<td  class="a2b">
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; margin-left: 3px; margin-left: 1px;; width: 50px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="repMgrId" maxlength="15"> </label>
+				
+				</td>
+
+
+				<!-- End Column 1 -->
+				<!-- Start Column 2 -->
+				<td class="a2b" style="padding-left: 40px;">
+				
+					<label class="control-label v15b">Call Type:</label>
+				
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="callTyp" maxlength="15"> </label>
+				
+				</td>
+
+				<!-- End Column 2 -->
+				<!-- Start Column 3 -->
+				<td>
+			 
+					<label class="control-label v15b" style="padding-left: 25px;">Network:</label>
+				
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="ntwk" maxlength="15"> </label>
+				
+				</td>
+				<!-- End Column 3 -->
+			</div>
+
+		</div>
+		</tr>
+		<!-- -->
+		   <tr>
+			   <div class="row">
+			<div class="col-md-12">
+				<!-- Column 1 -->
+				<td class="a2b" style="width: 200px;">
+				
+					<label class="control-label v15b">MonitById:</label>
+				
+				</td>
+				<td class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; margin-left: 3px; margin-left: 1px;width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="monitBy" maxlength="15"> </label>
+				
+				</td>
+				<td class="a2b"></td>
+				<td class="a2b"></td>
+				
+				<td class="a2b"></td>
+				<td class="a2b"></td>				
+				</tr>
+				<tr>
+				<td class="a2b" style="width: 200px;">
+
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Practice Monitor?</label>
+				</td>
+				
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="practiceMon" maxlength="15"> </label>
+				
+				</td>
+				<td class="a2b" style="padding-left: 40px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Cust mood at beginning:</label>
+			
+				</td>
+				<td  class="a2b">
+
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="custMoodAtBegin" maxlength="15"> </label>
+				
+				</td>
+				</tr>
+				<tr>
+				
+				<td class="a2b" style="width: 200px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 25px;">Rep failed this call?</label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="repFailThisCall" maxlength="15"> </label>
+				
+				</td>
+				
+				<td class="a2b">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 25px;">Cust mood at end:</label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="custMoodAtEnd" maxlength="15"> </label>
+				
+				</td>
+		</tr>
+		
+		
+		<tr>
+			<div class="row">
+
+			<div class="col-md-12" style="width: 15%;">
+				<!-- Column 1 -->
+				<td class="a2b" style="width: 200px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Was this callback?</label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="wasThisCallback" maxlength="15"> </label>
+				
+				</td>
+				
+				<td class="a2b" style="padding-left: 40px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Reason for callback:</label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="reasonForCallback" maxlength="15"> </label>
+				
+				</td>
+				
+				
+            </div>
+			</div>
+			</tr>
+			<tr>
+			<div class="row">
+
+			<div class="col-md-12" style="width: 15%;">
+				<!-- Column 1 -->
+				<td class="a2b" style="width: 200px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Previous Rep caused callback?</label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="prevRepCallback" maxlength="15"> </label>
+				
+				</td>
+				<td class="a2b" style="padding-left: 40px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Comments:</label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="preComments" maxlength="15"> </label>
+				
+				</td>
+
+                                                               </div>
+			</div>
+			</tr>
+            <tr>
+                <td width="100%" class="v1b" colspan="2">
+                  	<hr color="#FFFFFF">
+				</td>
+            </tr>                                                 
+            <tr>
+			<div class="row">
+
+			<div class="col-md-12" style="width: 15%;">
+				<!-- Column 1 -->
+				<td class="a2b" style="width: 200px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Is customer likely to callback?</label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="isCustomerLikely" maxlength="15"> </label>
+				
+				</td>
+				
+				<td class="a2b" style="width: 250px; padding-left: 40px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Reason for likely callback:</label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="reasonForLikelyCallback" maxlength="15"> </label>
+				
+				</td>
+                                                               </div>
+			</div>
+			</tr>
+            <tr>
+			<div class="row">
+
+			<div class="col-md-12" style="width: 15%;">
+				<!-- Column 1 -->
+				<td class="a2b" style="width: 200px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Current Rep caused this callback?</label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="currentRepCallback" maxlength="15"> </label>
+				
+				</td>
+				
+				<td class="a2b" style="padding-left: 40px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Comments:</label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label
+						style="padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px; white-space: nowrap"
+						class="control-label v1b" class="selecta"
+						id="currentComments" maxlength="15"> </label>
+				
+				</td>
+				
+
+                                                               </div>
+			</div>
+			</tr>
+			 <tr>
+		        <td width="100%" class="v1b" colspan="2">
+		           	<hr color="#FFFFFF">
+				</td>
+		     </tr>
+		                   
+           <tr>
+			<div class="row">
+
+			<div class="col-md-12" style="width: 15%;">
+				<!-- Column 1 -->
+				<td class="a2b" style="width: 200px;">
+
+				
+					<label class="control-label v15b"
+						style="padding-left: 0%;">Call comments: </label>
+			
+				</td>
+				<td  class="a2b">
+
+				
+					<label 
+						style="float:left; width:50px; padding-bottom: 20 px !important; padding-right: 100%; margin-bottom: 5px !important; width: 100px;"
+						class="control-label v1b" class="selecta"
+						id="callComments" maxlength="15"> </label>
+				
+				</td>
+
+            </div>
+			</div>
+			</tr>	
+        </table>
+	</div>
+			<br>
+  			  <b><font face="Arial" size="2" color="#800000">Scores:</font></b>
+  			  
+						<div id="collapseAdd_info" class="panel-collapse collapse in blueBorder" style="padding-right: 5px; padding-left: 5px;">
+							<table border="0" width="100%" style="border: 0px; margin-left: 0px; margin-top: 1px; padding-left: 32px; "  cellspacing="0" cellpadding="0" id="editTable" class="datatable table table-bordered v15bw" >
+								<thead class="v15bw">
+									
+								</thead>
+								<tbody id="scoreTable">
+								</tbody>
+								<tr>
+						<td width="35%" align="right" class="v15b">
+								Total Score: 
+						</td>
+						<td width="12%" class="v15b">&nbsp;&nbsp;<label id="totalScore"></label></td>
+				 </tr>	
+				<tr>
+                 	<td width="100%" bgcolor="#F3F3F3" align="right" class="v15b">
+						Email this page to (emp#): 
+							<input type="text" name="email_fedex_id_nbr" id="email_fedex_id_nbr"  size="10"/>
+							<input type="button" name="but_email" value="Send" class="pushbut1" onClick="emailMonitorBPA();">
+						&nbsp;
+					</td>
+				</tr>				 
+				</table>
+				</td>
+			  </tr>
+			  
+			  <tr>
+                 	<td width="100%" bgcolor="#F3F3F3" valign="top" class="v15b">
+						&nbsp;
+					</td>
+			 </tr>
+
+				
+							</table>
+
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+
+</div>
+
+<div id="responseText" hidden></div>
+
+
+</div>
+		</section>
+	</div>
+
+</div>
+	</div>
+</div>
+
+<!-- panel end -->
+
+</div>
+<!-- col end -->
+
+
+
+
+
+</div>
+<!-- row end -->
+</div>
+<!-- section container start -->
+
+
+
+<!-- Side menu + Content end -->
+
+
+
+<!-- Content container end -->
+<!-- Footer container start -->
+<div id="td1" class="footer"> </div>
+<!-- Footer container end -->
+<!-- ===== PAGE END ===== -->
+
+<!-- ===== JAVASCRIPT START ===== -->
+
+<script src="resources/js/lib/jquery/jquery-1.10.2.min.js"
+	type="text/javascript"></script>
+
+<!-- Bootstrap script -->
+<script src="resources/js/lib/bootstrap/bootstrap.min.js"
+	type="text/javascript"></script>
+<script src="resources/js/lib/datepicker/bootstrap-datepicker.js"></script>
+<!-- Slim Scroll script -->
+<script src="resources/js/lib/slimscroll/jquery.slimscroll.min.js"
+	type="text/javascript"></script>
+
+<!-- Date range picker script -->
+<script src="resources/js/lib/momentjs/moment.min.js"
+	type="text/javascript"></script>
+<script src="resources/js/lib/daterangepicker/daterangepicker.js"
+	type="text/javascript"></script>
+
+<script src="resources/js/lib/datepicker/bootstrap-datepicker.js"></script>
+
+<!-- Theme script -->
+<script src="resources/js/CqAdmin.js" type="text/javascript"></script>
+<script src="resources/js/common.js" type="text/javascript"></script>
+<script src="resources/js/CoreCqView.js" type="text/javascript"></script>
+
+
+
+
+<!-- Bootstrap script -->
+
+</body>
+</html>

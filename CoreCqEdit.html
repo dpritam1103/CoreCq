@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control"
+content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>Cq Monitor Edit</title>
+
+
+<link rel="stylesheet" href="resources/css/lib/bootstrap/bootstrap.css" />
+<link rel="stylesheet" href="resources/css/lib/font-awesome/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/lib/ionicons/ionicons.min.css">
+<link rel="stylesheet" href="resources/css/lib/daterangepicker/daterangepicker-bs3.css" />
+<link rel="stylesheet" href="resources/css/lib/datepicker/bootstrap-datepicker.css">
+<link rel="stylesheet" href="resources/css/lib/datatables/datatables.css">
+<link rel="stylesheet" href="resources/css/lib/datatables/datatable.tableTools.css">
+<link rel="stylesheet" href="resources/css/lib/tabdrop/tabdrop.css" />
+<link rel="stylesheet" href="resources/css/styles.css" id="theme-css" />
+<link rel="stylesheet" href="resources/css/search.css" id="search-css" />
+<link rel="stylesheet" href="resources/css/rfnet.css" id="theme-css">
+<link rel="stylesheet" href="resources/css/commonCoreCq.css" />
+<link rel="stylesheet" href="resources/css/cq1.css" />
+<link rel="stylesheet" href="resources/css/lib/jqvmap/jqvmap.css">
+<link rel="stylesheet" href="resources/css/lib/datepicker/datepicker.css">
+
+
+
+<style>
+
+@page {
+    margin: 0;
+}
+
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+}
+
+.v15bw { 
+font-family: Verdana;
+font-size: 11px; 
+font-weight: bold;
+color: ffffff;  
+}
+.plainwhite {text-decoration: none;
+  color: #ffffff;
+  font-family: verdana; }
+
+  
+  #menu,#menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 105%;
+	
+	
+}
+
+#menu li {
+	float: left;
+	position: relative;
+	line-height: 4.5em;
+	width: 130%;
+}
+
+#menu li ul {
+	position: absolute;
+	margin-top: -0em;
+	margin-left: .5em;
+	
+	display: none;
+	opacity: 0.85;
+	z-index: 50;
+}
+
+#menu ul li ul {
+	margin-top: -3em;
+	margin-left: 8em; / * Menu pop up*/
+	float:left;
+	
+	
+}
+
+#menu a {
+display: block;
+border-right: 3px solid #fff;
+color: #C0C0C0;
+text-decoration: none;
+background-color: #663399;
+text-align: center;
+
+
+}
+
+#menu a:hover {
+background-color: purple;
+color: #fff;
+
+}
+
+#menu ul {
+border-top: 0px solid #fff;
+}
+
+#menu ul a {
+border-right: none;
+border-right: 1px solid #fff;
+border-bottom: 1px solid #fff;
+border-left: 1px solid #fff;
+border-top: 0.5px solid #fff;
+
+}
+/* SHOW SUBMENU 1 */
+#menu li:hover ul,#menu li.over ul {
+display: block;
+
+
+
+}
+
+#menu li:hover ul ul,#menu li.over ul ul {
+display: none;
+
+}
+/* SHOW SUBMENU 2 */
+#menu ul li:hover ul,#menu ul li.over ul {
+display: block;
+
+}
+  
+
+html {
+position: relative;
+min-height: 100%;
+}
+
+body {
+margin: 0 0 100px;
+padding: 25px;
+}
+
+
+</style>
+
+<!-- ===== STYLESHEETS START ===== -->
+
+<style type="text/css">
+.jqstooltip {
+position: absolute;
+left: 0px;
+top: 0px;
+visibility: hidden;
+background: rgb(0, 0, 0) transparent;
+background-color: rgba(0, 0, 0, 0.6);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
+endColorstr=#99000000);
+-ms-filter:
+"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+color: white;
+font: 10px arial, san serif;
+text-align: left;
+white-space: nowrap;
+padding: 5px;
+border: 1px solid white;
+z-index: 10000;
+}
+
+.jqsfield {
+color: white;
+font: 10px arial, san serif;
+text-align: left;
+}
+
+
+
+.blueBorder {
+width: 98%;
+border: 1px solid #0099CC;
+padding: 10px margin-bottom: 1%;
+padding-left: 30px;
+padding-right: 30px;
+background-color: white;
+}
+
+
+
+</style>
+</head>
+<body style="font-size: 12px;">
+
+
+<!-- ===== PAGE START ===== -->
+<div>
+	 <header> </header>
+	<!-- Content container start -->
+
+<div class="container" id="content-container" style="margin-top: 5px; "><!--********Menu Alignment-->
+	<div class="content-wrapper">
+		<div class="row">
+
+			<div>
+
+				<section>
+
+											<!-- Start from here  -->
+							<div class="row">
+							<div 	style="margin-bottom: 1%; padding-left: 30px; padding-right: 30px;"> <!-- Screen Resolution-->
+								
+								<ul id="menu" hidden class="nav nav-tabs" >
+									<li style="width: 14%;display:none;" id="mgrGMDiv"><a href="NotWorking"
+										style="border-left: 2px solid #fff;" title="GM">GM</a>
+									
+									</li>					
+								
+								
+								
+								<li style="width: 12%; display:none; " id="mgrPGMDiv"><a href="NotWorking"
+										style="border-left: 2px solid #fff;" title="PGM">PGM</a>
+									
+									</li>
+								
+									<li style="width: 12%; display:none; " id="AdminDiv"><a href="#"
+										style="border-left: 2px solid #fff;" title="Admin">Admin</a>
+									<ul class="nav nav-tabs">
+											<li><a href="#" title="Monthly Job Creation">Monthly Job Creation</a>
+											<ul style="width: 100%; padding-left: 35%" class="nav nav-tabs">
+											<li><a href="AdminGMSchedSend"title="GM Schedule">GM Schedule</a></li>
+											<li><a href="AdminPGMSchedSend" title="PGM Schedule">PGM Schedule</a></li>
+											<li><a href="traceAuditSchedule"title="Trace Audit Schedule">Trace Audit Schedule</a></li>
+											</ul>
+											<li><a href="#" title="Create a New Monitor">Create a New Monitor</a>
+												<ul style="width: 100%; padding-left: 35%" class="nav nav-tabs">
+													<li><a href="CreateCqMonitor.html" title="CQ Monitor">CQ Monitor</a></li>
+													<li><a href="CaseAuditHome" title="Case Audit Monitor">Case Audit Monitor</a></li>
+													<li><a href="CreateTraceAuditMon.html" title="Trace Audit Monitor">Trace Audit Monitor</a></li>
+													<li><a href="CATAuditHome" title="CAT Audit Monitor">CAT Audit Monitor</a></li>
+												</ul>
+											</li>
+											<li><a href="#" title="Other Utilities">Other Utilities</a>
+											<ul style="width: 100%; padding-left: 35%" class="nav nav-tabs">
+											<li><a href="AdminMonLock.html" title="Lock Monitors">Lock Monitors</a></li>
+											<li><a href="AdminMgrChg.html" title="Change Mgr">Change Mgr.</a></li>
+											<li><a href="Home.html" onclick="refreshRefData();">Refresh Reference Data</a></li>
+											<li><a href="NotWorking" title="Reset GM and PGM Semaphore" >Reset GM and PGM Semaphore</a></li>
+											</ul>
+											</li>
+									</ul>
+									</li>
+
+								
+								 <li style="width: 14%; display:none;" id="CqAlignDiv"><a href="#" title="CQ Alignment">CQ Alignment</a>
+
+									<ul class="nav nav-tabs">
+									<li><a href="NotWorking" title="Create">Create</a>
+										<li><a href="NotWorking" title="Send">Send</a></li>
+										<li><a href="NotWorking" title="Score">Score</a></li>
+								</ul>
+								</li>
+								<li style="width: 14%; display: none;" id="operationAdmin"><a
+											href="NotWorking" title="Operation Admin">Operation Admin</a>
+											<ul style="width: 120%; padding-left: 0%" class="nav nav-tabs">
+													<li><a href="CreateCqMonitor.html" title="Create a new CQ Monitor">Create a new CQ Monitor</a></li>
+													<li><a href="CaseAuditHome" title="Operation Admin">Create a new Case Audit Monitor</a></li>
+													<li><a href="CreateTraceAuditMon.html" title="Create a new Trace Audit Monitor">Create a new Trace Audit Monitor</a></li>
+													<li><a href="CATAuditHome" title="Create a new CAT Audit Monitor" >Create a new CAT Audit Monitor</a></li>
+												</ul>
+											</li>
+											<li style="width: 14%; display: none;" id="newCQMonitor"><a
+											href="CreateCqMonitor.html" title="Create CQ Monitor">Create CQ Monitor</a></li>
+								<li style="width: 14%; display: none;" id="CqSearchDiv"><a
+											href="CqSearch.html" title="CQ Search"  style="background-color: purple;">CQ Search</a></li>
+											<li style="width: 16%; display: none;" id="newCaseAuditMonitor"><a
+											href="CaseAuditHome" title="Create Case Monitor">Create Case Monitor</a></li>
+										
+												<li style="width: 16%; display: none;" id="newTraceAuditMonitor"><a
+											href="CreateTraceAuditMon.html" title="Create Trace Monitor">Create Trace Monitor</a></li>
+											
+											<li style="width: 16%; display: none;" id="newCatAuditMonitor"><a
+											href="CATAuditHome">Create CAT Monitor</a></li>
+										<li style="width: 16%; display: none;" id="ClaimsSearchDiv"><a
+											href="ClaimsAuditSearch.html" title="Case Audit Search">Case Audit Search</a></li>
+										<li style="width: 15%; display: none;" id="TraceSearchDiv"><a
+											href="TraceAuditSearch.html" title="Trace Audit Search" style="border-left: 0px solid #fff;">Trace Audit
+												Search</a></li>
+										<li style="width: 15%; display: none;" id="CATSearchDiv"><a
+											href="CatAuditSearch.html" title="CAT Audit Search">CAT Audit
+												Search</a></li>
+						
+											</ul>
+							</div>
+
+
+						</div>
+						<!-- End here  -->
+						<!-- row end -->
+
+
+
+			<div style="right: -1px; width:1160px" class="col-md-12">	<!-- ***********************White Bar  -->
+				<div class="panel-group" id="accordionAddApp">
+					<div class="panel panel-info">
+						
+						<div id="collapseAdd_info" class="panel-collapse collapse in">
+
+							<div class="panel-body" style="width: 1100px;" >
+								<b><font face="Arial" size="2" color="#800000">EDIT CQ MONITOR</font></b>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									
+										
+								  <table border="0" width="97%" cellpadding="0">
+									 <tr>
+										<td class="a2b"><font color="#800000">Header:</td>
+										<td align="right">
+											<input type="button" name="but_back" value="Back" class="pushbut1" onClick="getBackSearch('CQ')">
+											<input type="button" name="but_print" value="Print" class="pushbut1" onClick="document.getElementById('menu').style.display='none';document.getElementById('top-navbar').style.display='none';javascript:window.print();">
+										</td>
+									</tr>
+								  </table>
+                                  <table border="0" width="100%" cellpadding="0">
+								<div class="panel-collapse collapse in blueBorder">
+																					
+						
+							  <tr>
+							<div class="row">
+								<div class="col-md-12">
+									<!-- Column 1 -->
+									<td class="a2b" width="15%">
+							
+										<label label class="control-label v15b" style="width: 250px; padding-left: 0%;">RepNm(Id):</label>
+									
+                                                             </td>
+
+							<td class="a2b" width="15%">
+							   <input type="text" name="repNmId" id="repNmId" class="textc" size="30" readonly="true">
+                            </td>
+							<!-- End Column 1 -->
+							<!-- Start Column 2 -->
+							<td class="a2b">
+								 <label class="control-label v15b" class="selecta">Call Dt:</label>
+                            </td>
+                            <td  class="a2b">
+								<input type="text" name="callDT" id="callDT" class="texta" size="20" value="" readonly="true">
+								<img src="resources/images/cal.gif" border="0" id="imgIdCaseAuditMonitDate" onClick="dateFillInTxt('idMonitDate')">&nbsp;
+                               </td>
+
+							<!-- End Column 2 -->
+							<!-- Start Column 3 -->
+							<td  class="a2b">
+			                <label class="control-label v15b" style="margin-left: -70px;">CraId:</label>
+                            </td>
+							<td class="a2b">
+							<input type="text" name="craId" id="craId" style="margin-right: 22px;" value="" class="textc" size="20" maxlength="20">
+
+							</td>
+							<!-- End Column 3 -->
+
+										</div>
+
+									</div>
+							</tr>
+                                            <tr> 
+									<div class="row">
+									     <div class="col-md-12">
+								<!-- Column 1 -->
+								<td  class="a2b">
+									<label class="control-label v15b">CallCenter:</label>
+								 </td>
+								<td  class="a2b">
+								<input type="text" name="callCntr" id="callCntr" class="textc" size="20" readonly="true">
+								</td>
+								<!-- End Column 1 -->
+								<!-- Start Column 2 -->
+								<td class="a2b">
+									<label class="control-label v15b">MonitMnth:</label>
+								</td>
+								<td  class="a2b">
+								<input type="text" name="monitMnth" id="monitMnth" class="textc" size="20" readonly="true">
+								</td>
+								<!-- End Column 2 -->
+								<!-- Start Column 3 -->
+								<td class="a2b">
+								<label class="control-label v15b" style="margin-left: -70px;">RefNbr:</label>
+								</td>
+								<td  class="a2b">
+								<input type="text" name="refNbr" id="refNbr" class="texta" size="20" >
+
+								</td>
+								<!-- End Column 3 -->
+								</div>
+							</div>
+						</tr>
+                                       <tr>
+							<div class="row">
+								<div class="col-md-12">
+									<!-- Column 1 -->
+									<td class="a2b">
+									<label class="control-label v15b">RepMgrId:</label>
+									</td>
+									<td  class="a2b">
+										<input type="text" name="repMgrId" id="repMgrId" class="textc" size="20" readonly="true">						
+									</td>
+                                                   <!-- End Column 1 -->
+									<!-- Start Column 2 -->
+									<td class="a2b">
+									<label class="control-label v15b">CallType:</label>
+									</td>
+									<td  class="a2b">
+									<select name="callTyp" id="callTyp" Class="selecta" readonly="false" >
+									</select>	
+									</td>
+                                                <!-- End Column 2 -->
+								<!-- Start Column 3 -->
+								<td>
+								<label class="control-label v15b" style="margin-left: -70px;">Ntwk:</label>
+								</td>
+								<td  class="a2b">
+                                               <input type="text" name="ntwk" id="ntwk" class="textc" size="20" readonly="true">
+								</td>
+								<!-- End Column 3 -->
+						</div>
+                                      </div>
+					</tr>
+													
+					<tr>
+					<div class="row">
+					<div class="col-md-12">
+					<!-- Column 1 -->
+					<td class="a2b">
+						<label class="control-label v15b">MonitById:</label>
+					</td>
+					<td class="a2b">
+						<input type="text" name="monitBy" id="monitBy" class="textc" size="20" readonly="true">
+
+															
+                                   </td>
+                                  <!-- End Column 1 -->
+					<!-- Start Column 2 -->
+					<td class="a2b">
+                                   <label class="control-label v15b" style="padding-left: 0%;">Ntwk Override:</label>
+					</td>
+					
+					<td  class="a2b"  style="width: 23%;">
+					
+					<input type="checkbox" name="chx_ntwkOvrd" id="chx_ntwkOvrd"  onclick="enableDisableOvrdNtwk()">
+					<select name="ntwkOveride" id="ntwkOveride" Class="selecta" disabled readonly="false" >
+					</select>
+
+					</td>
+
+					<!-- End Column 2 -->
+					<!-- Start Column 3 -->
+					
+					<!-- End Column 3 -->
+					</div>
+
+					</div>
+			</tr>
+			<tr>
+			<div class="row">
+                             <div class="col-md-12" style="width: 15%;">
+					<!-- Column 1 -->
+					<td class="a2b">
+                                   <label class="control-label v15b" style="padding-left: 0%;">Practice Monitor:</label>
+					</td>
+					<td  class="a2b"  style="width: 23%;">
+					<input type="radio"  class="radioCell" name="practiceMon" value="Y">Yes
+					<input type="radio"  class="radioCell" name="practiceMon" value="N" checked>No
+						
+					</td>
+					
+					<td class="a2b">
+                                   <label class="control-label v15b" style="width: 150px; padding-left: 0%;">Cust mood at beginning:</label>
+					</td>
+					<td  class="a2b"  style="width: 23%;">
+					<select name="custMoodAtBegin" id="custMoodAtBegin" Class="selecta" readonly="false" >
+					</select>
+
+					</td>
+					
+				</div>
+				</div>
+			
+			</tr>
+               			<tr>
+			<div class="row">
+                             <div class="col-md-12" style="width: 15%;">
+							<td class="a2b">
+                                   <label class="control-label v15b" style="padding-left: 0%;">Rep failed this call?</label>
+					</td>
+					<td  class="a2b"  style="width: 23%;">
+					<select name="failCallFlg" id="failCallFlg" Class="selecta" readonly="false" >
+						<option value="N">N</option>
+						<option value="Y">Y<option>
+					</select>
+					</td>									
+					<td class="a2b">
+                                   <label class="control-label v15b" style="padding-left: 0%;">Cust mood at end:</label>
+					</td>
+					<td  class="a2b"  style="width: 23%;">
+					<select name="custMoodAtEnd" id="custMoodAtEnd" Class="selecta" readonly="false" >
+					</select>
+
+					</td>
+					
+					
+				</div>
+				</div>
+			
+			</tr>
+               		<tr>
+			<div class="row">
+                             <div class="col-md-12" style="width: 15%;">
+															
+					<td class="a2b">
+                                   <label class="control-label v15b" style="padding-left: 0%;">Was this callback?</label>
+					</td>
+					<td  class="a2b"  style="width: 23%;">
+					<select name="wasThisCallback" id="wasThisCallback" Class="selecta" readonly="false" onChange="enableDisableClbck();" >
+					<option value="N">N</option>
+					<option value="Y">Y</option>
+					</select>
+
+					</td>
+					
+					<td class="a2b">
+							<label class="control-label v15b">Reason for callback:</label>
+					</td>
+					<td  class="a2b">
+							<select name="reasonForCallback" id="reasonForCallback" Class="selecta" readonly="false" >
+					</select>
+					</td>
+				</div>
+				</div>
+			
+			</tr>
+			
+               			<tr>
+			<div class="row">
+                             <div class="col-md-12" style="width: 15%;">
+															
+					<td class="a2b">
+                                   <label class="control-label v15b" style="padding-left: 0%;">Previous Rep caused callback?</label>
+					</td>
+					<td  class="a2b"  style="width: 23%;">
+					<select name="prevRepCallback" id="prevRepCallback" Class="selecta" readonly="false" onChange="populateClbckResn(reasonForCallback,'N',this.value);">
+					<option value="N">N</option>
+					<option value="Y">Y</option>
+					</select>
+
+					</td>
+					
+					<td class="a2b">
+							<label class="control-label v15b">Comments:</label>
+					</td>
+					<td  class="a2b">
+							<input type="textarea" name="preComments" id="preComments" class="texta" size="50" >
+					</td>
+				</div>
+				</div>
+			
+			</tr>
+			<tr>
+			<div class="row">
+                             <div class="col-md-12" style="width: 15%;">
+															
+					<td class="a2b">
+                                   <label class="control-label v15b" style="padding-left: 0%;">Is customer likely to callback?</label>
+					</td>
+					<td  class="a2b" style="width: 23%;">
+					<select name="custLikelyClbckFlg" id="custLikelyClbckFlg" Class="selecta" readonly="false" >
+					<option value="N">N</option>
+					<option value="Y">Y</option>
+					</select>
+
+					</td>
+					
+					<td class="a2b">
+							<label class="control-label v15b">Reason for likely callback:</label>
+					</td>
+					<td  class="a2b" style="width: 23%;">
+							<select name="likelyClbckResnIdNbr" id="likelyClbckResnIdNbr" class="selecta">
+									<option value=""><//>option>
+							</select>
+					</td>
+				</div>
+				</div>
+			
+			</tr>
+			<tr>
+			<div class="row">
+                             <div class="col-md-12" style="width: 15%;">
+															
+					<td class="a2b">
+                                   <label class="control-label v15b" style="padding-left: 0%;">Current Rep caused this callback?</label>
+					</td>
+					<td  class="a2b"  style="width: 23%;">
+					<select name="curRepCauseLikelyClbckFlg" id="curRepCauseLikelyClbckFlg" Class="selecta" readonly="false" >
+					<option value="N">N</option>
+					<option value="Y">Y</option>
+					</select>
+
+					</td>
+					
+					<td class="a2b">
+                                   <label class="control-label v15b" style="padding-left: 0%;">Comments:</label>
+					</td>
+					<td  class="a2b"  style="width: 23%;">
+					<textarea name="likelyClbckResnComDesc" id="likelyClbckResnComDesc" class="texta" rows="1" cols="41" onkeyup="return setMaxLength(this, 500)" maxlength="500"></textarea>
+						
+					</td>
+					
+					
+				</div>
+				</div>
+			
+			</tr>
+				<tr><td class="control-label v15b">Call Comments</td></tr>
+						<tr><td>
+						<textarea name="callComments" id="callComments" Class="texta" rows="6" cols="84" onkeyup="charCounter(this, counterA);return setMaxLength(this, 2000);"></textarea>
+								<br><font face="arial" size="1">(2000 chars max)</font>
+								&nbsp;<input type="text" name="counterA" id="counterA" class="textc" size="1" READONLY> 
+						</td>
+
+                  			<td  width = "40%" align ="right"class="a2b">
+								<label class="v15b" align="center;">Delete this monitor (soft delete):</label> <input type="checkbox" name="deltFlg" id="deltFlg" value="Y">	
+						</td>
+					</tr>
+					<tr>
+                            <td width="40%" class="v1b" colspan="2"></td>
+                            <td width="60%" colspan="2"></td>
+                          </tr>
+		</div>
+	</table>
+												
+			
+					<br>
+			  <b><font face="Arial" size="2" color="#800000">Scores:</font></b>
+			  
+				<div id="collapseAdd_info_body" class="panel-collapse collapse in blueBorder"  style="width: 1060px; padding-right: 5px; padding-left: 5px;">
+					<table border="0" width="100%" style="border: 0px; margin-left: 0px; margin-top: 0px;" cellspacing="0" cellpadding="0" id="editTable" class="datatable table table-bordered v15bw">
+						<thead class="v15bw">
+							
+						</thead>
+						<table class="detail">
+						<tbody id="scoreTable" width="100%">
+						
+						
+						</tbody>
+						</table>
+						
+						<tr>
+				<td width="47%" align="left" class="v15b" colspan="2">
+						 <input type="button" name="but_score" value="Show Score" class="pushbut1" onclick="getTotalScoreCatAudit()">
+				</td>
+		 </tr>
+	  
+	  <tr>
+               	<td width="100%" bgcolor="#F3F3F3" valign="top" class="v15b">
+				&nbsp;
+			</td>
+	  </tr>
+
+	  <tr>
+               <td width="100%" bgcolor="#F3F3F3" valign="top" class="v15b">
+			<input type="hidden" name="doAction" value="caseAuditUpd">
+			<input type="hidden" name="but" value="NONE">
+			<input type="button" name="but_upd" id="but_upd" value="Submit" class="pushbut1" onClick="bpaCqRecordUpdate('U'); ">
+			<input type="button" name="but_save" value="Save as Incomplete" class="pushbut1" onClick="bpaCqRecordUpdate('S'); "> 
+			
+		 <br>
+			 <font color="#009900"><i><div id="div_prg_upd"></div></i></font>
+		</td>
+	 </tr>
+	</table>
+
+						</div>
+					
+				</div>
+			</div>
+			
+			
+
+		</div>
+		</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+</div>
+						
+						
+						
+						
+						
+				</section>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- panel end -->
+
+<!-- section container start -->
+
+
+
+			<!-- Side menu + Content end -->
+
+
+
+			<!-- Content container end -->
+			<!-- Footer container start -->
+<div id="td1" class="footer"> </div>
+			<!-- Footer container end -->
+			<!-- ===== PAGE END ===== -->
+
+			<!-- ===== JAVASCRIPT START ===== -->
+		
+			<script src="resources/js/lib/jquery/jquery-1.10.2.min.js" 	type="text/javascript"></script>
+			<script src="resources/js/common.js" type="text/javascript"></script>
+			
+			<!-- Bootstrap script -->
+			<script src="resources/js/lib/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+			<script src="resources/js/lib/datepicker/bootstrap-datepicker.js"></script>
+			<!-- Slim Scroll script -->
+			<script src="resources/js/lib/slimscroll/jquery.slimscroll.min.js" 	type="text/javascript"></script>
+
+			<!-- Date range picker script -->
+			<script src="resources/js/lib/momentjs/moment.min.js" type="text/javascript"></script>
+			<script src="resources/js/lib/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+			<script src="resources/js/lib/datepicker/bootstrap-datepicker.js"></script>
+			<script src="resources/js/lib/datatables/jquery.dataTables.min.js"></script>
+			<script src="resources/js/lib/datatables/datatables.js" type="text/javascript"></script>
+			<!-- Theme script -->
+			<script src="resources/js/CqAdmin.js" type="text/javascript"></script>
+			<script src="resources/js/NonBPAEdit.js" type="text/javascript"></script>
+			<script src="resources/js/common.js" type="text/javascript"></script>
+			<script src="resources/js/CreateNewMonitor.js" type="text/javascript"></script>
+
+
+			<!-- Bootstrap script -->
+</body>
+</html>
